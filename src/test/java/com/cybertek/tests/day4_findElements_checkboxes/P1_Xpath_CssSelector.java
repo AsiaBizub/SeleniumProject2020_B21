@@ -39,8 +39,7 @@ public class P1_Xpath_CssSelector {
         WebElement emailInputBox = driver.findElement(By.cssSelector("input[type='text']"));
 
         //Option #2: Using "name" attribute to locate the same web element
-        // WebElement emailInputBox = driver.findElement(By.cssSelector("input[name='email']"));
-
+        //WebElement emailInputBox = driver.findElement(By.cssSelector("input[name='email']"));
 
         //e. “Retrieve password” button
         //Locating the button using #2 cssSelector syntax.
@@ -53,11 +52,20 @@ public class P1_Xpath_CssSelector {
         //locating using class value
         WebElement retrievePasswordButton = driver.findElement(By.cssSelector("button.radius"));
 
-
         //f. “Powered by Cybertek School” text
+        WebElement footerText = driver.findElement(By.xpath("//div[@style='text-align: center;']"));
 
         //4. Verify all WebElements are displayed.
 
-    }
+        if(homeLink.isDisplayed() && forgotPasswordHeader.isDisplayed()
+                && emailLabel.isDisplayed() && emailInputBox.isDisplayed()
+                && retrievePasswordButton.isDisplayed() && footerText.isDisplayed() ){
+            System.out.println("ALL WEB ELEMENTS ARE DISPLAYED. VERIFICATION PASSED!");
+        }else{
+            System.out.println("One or more of the web elements are not displayed. Verification FAILED!!!");
+        }
 
+        //BREAK UNTIL 12.10PM CST
+        //BREAK UNTIL 1.10PM EST
+    }
 }
