@@ -88,6 +88,17 @@ public class DropdownTasks {
         Thread.sleep(1000);
         dayDropdown.selectByIndex(0);
 
+        //creating expected values
+        String expectedYear = "1922";
+        String expectedMonth = "December";
+        String expectedDay = "1";
+
+        //getting our actual values from browser
+
+        String actualYear = yearDropdown.getFirstSelectedOption().getText();
+        String actualMonth = monthDropdown.getFirstSelectedOption().getText();
+        String actualDay= dayDropdown.getFirstSelectedOption().getText();
+
 
 
     }
