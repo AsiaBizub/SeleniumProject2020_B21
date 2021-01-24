@@ -67,7 +67,7 @@ public class WT_CybertekLinkVerification {
             System.out.println("actualMessage = " + actualMessage);
         }
 
-       //driver.close();
+        driver.close();
         //BREAK UNTIL 11.17AM CST 12.17PM EST
     }
 
