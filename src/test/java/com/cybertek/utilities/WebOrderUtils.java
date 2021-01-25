@@ -60,6 +60,40 @@ public class WebOrderUtils {
 
     }
 
+//PRACTICE #4: Method: verifyOrder
+// Create a method named verifyOrder in SmartBearUtils class.
+// Method takes WebDriver object and String(name).
+// Method should verify if given name exists in orders.
+// This method should simply accepts a name(String),
+// and assert whether given name is in the list or not.
+// Create a new TestNG test to test if the method is working as expected.
+
+    public static void verifyOrder(WebDriver driver, String expectedName){
+
+    //1- Create a locator that returns all of the lists in the table
+    // table[@id=‘ctl00_MainContent_orderGrid’]//tr//td[2]
+
+    List<WebElement> allNames = driver.findElements(By.xpath("/table[@id=‘ctl00_MainContent_orderGrid’]//tr//td[2]"));
+     // we need to loop through 'allName' List of WebElement and make sure 'expectedName' is there
+
+     for(WebElement each : allNames){
+         if(each.getText().equals(expectedName)){
+             Assert.assertTrue(each.getText().equals(expectedName));
+             return;
+         }
+     }
+
+     // The only condition where the Assert.fail() line below is executed is if 'expectedName' is not in the list.
+     //Assert.fail(); method will fail the test no matter what. When execution reaches here, it will be used if the loop fails
+     Assert.fail("The expected name is not in the taqble");
+
+    }
+
+
+
+
+
+
 
 
 }
