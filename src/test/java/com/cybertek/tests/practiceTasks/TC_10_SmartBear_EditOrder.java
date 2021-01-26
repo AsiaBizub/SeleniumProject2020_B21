@@ -53,9 +53,6 @@ public class TC_10_SmartBear_EditOrder {
         for( WebElement each : allNames){
             if(each.getText().equals("Michael Jordan")){
                 Assert.assertTrue(each.getText().equals("Michael Jordan"));
-                System.out.println("Michael Jordan located in the list");
-            }else{
-                System.err.println("Michael Jordan not found. Space Jam assertion failed");
             }
         }
 
