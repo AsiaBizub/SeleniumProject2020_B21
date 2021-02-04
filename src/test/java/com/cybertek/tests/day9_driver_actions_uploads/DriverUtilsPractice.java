@@ -1,9 +1,16 @@
 package com.cybertek.tests.day9_driver_actions_uploads;
 
+import com.cybertek.utilities.BrowserUtils;
+import com.cybertek.utilities.ConfigurationReader;
 import com.cybertek.utilities.Driver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class DriverUtilsPractice {
+
 
     @Test
     public void simple_google_search_test(){
@@ -16,14 +23,48 @@ public class DriverUtilsPractice {
 //        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 //        driver.get("https://www.google.com");
 
-        Driver.getDriver().get("https://www.google.com");
+        //Driver.getDriver() = driver
+        String url = ConfigurationReader.getProperty("googleUrl");
+        Driver.getDriver().get(url);
 
         //Search for a value
+        WebElement searchBox = Driver.getDriver().findElement(By.name("q"));
+
+        String searchValue = ConfigurationReader.getProperty("searchValue");
+
+        searchBox.sendKeys(searchValue + Keys.ENTER);
+
         //Assert title contains the value
 
+        //actual --> actual page, browser
+        BrowserUtils.sleep(4);
+        String actualTitle = Driver.getDriver().getTitle();
 
+        //expected --> comes from documentation
+        String expectedInTitle = searchValue;
+
+        //We are adding 2 seconds just to wait for Firefox to catch up
+
+        System.out.println("actualTitle = " + actualTitle);
+        System.out.println("expectedInTitle = " + expectedInTitle);
+
+        Assert.assertTrue(actualTitle.contains(expectedInTitle));
+
+
+        //Calling the custom method we created to close the browser from Driver class
+        Driver.closeDriver();
+
+        //Driver.getDriver().close();
+        //Driver.getDriver().quit();
+
+        Driver.getDriver().get("https://www.etsy.com");
+
+        //BREAK UNTIL 1PM CST
+        //BREAK UNTIL 2PM EST
 
     }
+
+
 
 
 }
