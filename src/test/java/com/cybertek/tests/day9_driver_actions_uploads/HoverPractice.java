@@ -56,6 +56,8 @@ public class HoverPractice {
         //a. “name: user3” is displayed
         Assert.assertTrue(user3.isDisplayed(), "User3 is not displayed. FAILED!!!");
 
+        //Driver.closeDriver();
+
     }
 
 }
